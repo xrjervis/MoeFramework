@@ -58,10 +58,6 @@ namespace MoeFramework {
 
 		#region PublicStaticFunctions
 
-		public static SaveManager LoadFromStreamingAssets(string fileName) {
-			return Load(Application.persistentDataPath + "\\" + fileName);
-		}
-
 		public static SaveManager Load(string path) {
 			if (File.Exists(path) && Path.GetExtension(path) == extension) {
 				List<System.Type> additionalTypes = new List<System.Type>();

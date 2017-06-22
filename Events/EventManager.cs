@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,22 +18,22 @@ namespace MoeFramework {
 		    }
 	    }
 
-	    public static void StartListening(string eventName, UnityAction listener) {
+	    public static void StartListening(string eventName, Action listener) {
 		    UnityEvent thisEvent = null;
 		    if (Instance().eventDictionary.TryGetValue(eventName, out thisEvent)) {
-			    thisEvent.AddListener(listener);
+			    thisEvent += listener;
 		    } else {
 			    thisEvent = new UnityEvent();
-			    thisEvent.AddListener(listener);
+			    thisEvent += listener;
 			    Instance().eventDictionary.Add(eventName, thisEvent);
 		    }
 	    }
 
-	    public static void StopListening(string eventName, UnityAction listener) {
+	    public static void StopListening(string eventName, Action listener) {
 		    if (Instance() == null) return;
 		    UnityEvent thisEvent = null;
 		    if (Instance().eventDictionary.TryGetValue(eventName, out thisEvent)) {
-			    thisEvent.RemoveListener(listener);
+			    thisEvent -= listener;
 		    }
 	    }
 
