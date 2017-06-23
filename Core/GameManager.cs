@@ -242,7 +242,6 @@ namespace MoeFramework {
         }
 
         void Start() {
-            DontDestroyOnLoad(this);
             LevelManager.Instance().Init();
             data = new SaveManager();
 

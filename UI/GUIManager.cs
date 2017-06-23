@@ -44,7 +44,6 @@ namespace MoeFramework {
 			}
 		}
 
-
 		public T ShowUI<T>() where T : UIBase {
 			if (CheckCanvasRootIsNull())
 				return null;
@@ -55,7 +54,7 @@ namespace MoeFramework {
 
 
 			GameObject ui = Utility.GameObjectRelate.InstantiateGameObject(m_CanvasRoot, loadGo);
-			//去掉(Clone)
+
 			ui.name = ui.name.Replace("(Clone)", "").Trim();
 			T t = ui.AddComponent<T>();
 			t.Init(t.transform);
